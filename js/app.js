@@ -1,10 +1,5 @@
 /**
- *
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- *
+
  * Dependencies: None
  *
  * JS Version: ES2015/ES6
@@ -24,6 +19,7 @@
 */
 
 
+
 /**
  * End Global Variables
  * Start Helper Functions
@@ -39,6 +35,14 @@
 */
 
 // build the nav
+
+const javnav = [
+'Section1',
+'Section2',
+'Section3',
+'Section4'
+];
+
 
 
 // Add class 'active' to section when near top of viewport
