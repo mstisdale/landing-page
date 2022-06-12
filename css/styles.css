@@ -163,16 +163,3 @@ section:nth-of-type(even) .landing__container {
 	animation: rotate 8s linear 0s infinite forwards;
 }
 
-/* Keyframe Animations */
-@keyframes rotate {
-	from {
-		transform: rotate(0deg)
-		           translate(-1em)
-		           rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg)
-		           translate(-1em) 
-		           rotate(-360deg);
-	}
-}

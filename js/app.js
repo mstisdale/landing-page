@@ -2,8 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', NavBar, false);
 document.addEventListener('DOMContentLoaded', ActiveSection, false);
-document.addEventListener('DOMContentLoaded', ActiveNavBar, false);
-document.addEventListener('DOMContentLoaded', SmallMenu, false);
+document.addEventListener('DOMContentLoaded', ActiveNav, false);
+document.addEventListener('DOMContentLoaded', Menu, false);
 
 // Dynamically builds the navigation menu
 function NavBar() {
@@ -49,7 +49,7 @@ function ActiveSection() {
 }
 
 // Highlights active navbar link
-function ActiveNavBar() {
+function ActiveNav() {
     var linksContainer = document.getElementById("navbar__list");
     var links = linksContainer.querySelectorAll('li');
     for (var i = 0; i < links.length; i++) {
@@ -73,12 +73,12 @@ function Scrolling(sectionI) {
         top: pos,
         behavior: 'smooth'
     });
-    SmallMenu();
+    Menu();
 }
 
 
 // Creates top nav menu
-function SmallMenu() {
+function Menu() {
     var x = document.getElementById("navbar__list");
     if (x.className === "navbar__menu") {
         x.className += " responsive";
