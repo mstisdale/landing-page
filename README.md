@@ -10,10 +10,15 @@ There are 4 sections and a heading title. New sections are dynamically added to 
 ##Project Structure 
 
 css
-- styles.css    
+
+- styles.css   
+-  
 index.html
+
 js
+
 - app.js
+
 README.md
 
 ##Rubric
