@@ -19,7 +19,7 @@ function NavBar() {
         li.appendChild(tag);
         document.getElementById("navbar__list").appendChild(li);
         document.getElementById("navlinks" + [i + 1]).addEventListener("click", function () {
-            Scrolling(i + 1)
+            Scroll(i + 1)
         });
     };
 }
@@ -28,20 +28,20 @@ function NavBar() {
 function ActiveSection() {
     window.addEventListener('scroll', function () {
         const element = document.getElementsByClassName('landing__container');
-        for (var i = 0; i < element.length; i++) {
+        for (let i = 0; i < element.length; i++) {
             const position = element[i].getBoundingClientRect();
             const posit = position.top;
             if (posit <= window.innerHeight / 2) {
-                var activeClass = document.getElementsByClassName("your-active-class");
+                let activeClass = document.getElementsByClassName("your-active-class");
                 activeClass[0].className = activeClass[0].className.replace(" your-active-class", "");
                 element[i].className += " your-active-class";
 
-                var current = document.getElementsByClassName("active");
+                const current = document.getElementsByClassName("active");
                 if (current.length > 0) {
                     current[0].className = current[0].className.replace(" active", "");
                 }
 
-                var links = document.getElementById("navbar__list").querySelectorAll('li');
+                const links = document.getElementById("navbar__list").querySelectorAll('li');
                 links[i].className += " active";
             };
         };
@@ -50,11 +50,11 @@ function ActiveSection() {
 
 // Highlights active navbar link
 function ActiveNav() {
-    var linksContainer = document.getElementById("navbar__list");
-    var links = linksContainer.querySelectorAll('li');
-    for (var i = 0; i < links.length; i++) {
+    const linksContainer = document.getElementById("navbar__list");
+    const links = linksContainer.querySelectorAll('li');
+    for (let i = 0; i < links.length; i++) {
         links[i].addEventListener("click", function () {
-            var current = document.getElementsByClassName("active");
+            const current = document.getElementsByClassName("active");
             if (current.length > 0) {
                 current[0].className = current[0].className.replace(" active", "");
             }
@@ -64,7 +64,7 @@ function ActiveNav() {
 }
 
 // ScrollTo event handling
-function Scrolling(sectionI) {
+function Scroll(sectionI) {
     const section = document.getElementById('section' + sectionI);
     const pos = section.offsetTop;
     event.preventDefault();
@@ -79,7 +79,7 @@ function Scrolling(sectionI) {
 
 // Creates top nav menu
 function Menu() {
-    var x = document.getElementById("navbar__list");
+    let x = document.getElementById("navbar__list");
     if (x.className === "navbar__menu") {
         x.className += " responsive";
     } else {
