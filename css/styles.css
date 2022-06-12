@@ -1,30 +1,4 @@
-/*
- *
- * CSS written based on SMACSS architecture.
- * To learn more, visit: http://smacss.com/
- * 
- * For simplicity, no reset or normalize is added. 
- * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
- *
-*/
-
-
-/* ---- Base Rules ---- */
-body {
-    background: rgb(136, 203, 171);
-    background: linear-gradient(0deg, rgba(136, 203, 171, 1) 0%, rgba(0, 13, 60, 1) 100%);
-    margin: 0;
-    font-family: 'Merriweather', serif;
-    color: #fff;
-}
-
-
-/* Typeography General*/
-h1 {
-    font-family: 'Fira Sans', sans-serif;
-    font-size: 3em;
-    margin: 2em 1rem;
-}
+/* ---- Media Settings ---- */
 
 @media only screen and (min-width: 35em) {
     h1 {
@@ -33,19 +7,71 @@ h1 {
     }
 }
 
+@media screen and (max-width: 600px) {
+    .navbar__menu li {
+        display: none;
+    }
+
+    .navbar__menu a.javnav {
+        float: right;
+        display: block;
+        font-size: 50px;
+    }
+
+    .navbar__menu.responsive li {
+        position: relative;
+    }
+
+    .navbar__menu.responsive a.javnav {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .navbar__menu.responsive li {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+@media only screen and (min-width: 35em) {
+    .landing__container {
+        max-width: 50em;
+        padding: 4em;
+    }
+}
+
+/* ---- Basic Settings ---- */
+body {
+    background: rgb(136,203,171);
+    background: linear-gradient(0deg, rgb(125, 224, 176) 0%, rgba(0,13,60,1) 100%);
+    margin: 0;
+    font-family: 'Merriweather', serif;
+    color: #fff;
+}
+
+/* Typeography */
+h1 {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 3em;
+    margin: 2em 1rem;
+}
+
+
 h2 {
-    border-bottom: 1px solid #cc1;
+    border-bottom: 1px solid rgb(255, 255, 255);
     font-family: 'Oxygen', Sans-Serif;
     font-size: 3em;
     color: #fff;
 }
 
 p {
-    line-height: 1.6em;
+    line-height: 1.4em;
     color: #eee;
 }
 
-/* ---- Layout Rules ---- */
+/* ---- Layout ---- */
 main {
     margin: 10vh 1em 10vh;
 }
@@ -60,161 +86,93 @@ section {
     min-height: 80vh;
 }
 
-
-/* ---- Module Rules ---- */
-
-/* Navigation Styles*/
+/* Navigation */
 .navbar__menu ul {
-    padding-left: 0;
-    margin: 0;
+    padding-left: 20px;
+    margin: 20px;
     text-align: right;
 }
 
 .navbar__menu li {
+	padding: 20px;
     display: inline-block;
+	background-color: rgba(0,13,60,1);
+	font-weight: bolder;
+	text-decoration: none;
+    
 }
 
-.navbar__menu .menu__link {
-    display: block;
-    padding: 1em;
-    font-weight: bold;
-    text-decoration: none;
-    color: #000;
+/* Active Class */
+#navbar__list a:hover {
+    color: white;
 }
 
-.navbar__menu .menu__link:hover {
-    background: #333;
-    color: #fff;
-    transition: ease 0.3s all;
+#navbar__list a:visited {
+    color: white;
 }
 
-/* Header Styles */
+#navbar__list li.active{
+	background-color: rgb(136,203,171);
+}
+
+a {
+	text-decoration: none;
+    color: white;
+}
+
+/* Javascript Menu */
+.navbar__menu a.javnav {
+    display: none;
+}
+
+/* Header */
 .page__header {
-    background: #fff;
+    background: rgba(0,13,60,1);
     position: fixed;
-    top: 0;
+	top: 0;
     width: 100%;
     z-index: 5;
 }
 
-/* Footer Styles */
+/* Footer*/
 .page__footer {
     background: #000;
     padding: 3em;
     color: #fff;
 }
 
-.page__footer p {
+.page__footer p{
     color: #fff;
 }
 
-
-/* ---- Theme Rules ---- */
-/* Landing Container Styles */
+/*Container  */
 .landing__container {
     padding: 1em;
     text-align: left;
 }
 
-@media only screen and (min-width: 35em) {
-    .landing__container {
-        max-width: 50em;
-        padding: 4em;
-    }
-}
-
 section:nth-of-type(even) .landing__container {
     margin-right: 0;
     margin-left: auto;
-    text-align: right;
+    text-align: right; 
 }
 
-/* Background Circles */
-/* Note that background circles are created with psuedo elements before and after */
-/* Circles appear to be random do to use of :nth-of-type psuedo class */
-section:nth-of-type(odd) .landing__container::before {
-    content: '';
-    background: rgba(255, 255, 255, 0.187);
-    position: absolute;
-    z-index: -5;
-    width: 20vh;
-    height: 20vh;
-    border-radius: 50%;
-    opacity: 0;
-    transition: ease 0.5s all;
+/* Section Active Class */
+.your-active-class {
+    background-color: rgb(136,203,171);
+	animation: rotate 8s linear 0s infinite forwards;
 }
 
-section:nth-of-type(even) .landing__container::before {
-    content: '';
-    background: rgb(255, 255, 255);
-    background: linear-gradient(0deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, .2) 100%);
-    position: absolute;
-    top: 3em;
-    right: 3em;
-    z-index: -5;
-    width: 10vh;
-    height: 10vh;
-    border-radius: 50%;
-    opacity: 0;
-    transition: ease 0.5s all;
-}
-
-section:nth-of-type(3n) .landing__container::after {
-    content: '';
-    background: rgb(255, 255, 255);
-    background: linear-gradient(0deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, .2) 100%);
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: -5;
-    width: 10vh;
-    height: 10vh;
-    border-radius: 50%;
-    opacity: 0;
-    transition: ease 0.5s all;
-}
-
-section:nth-of-type(3n + 1) .landing__container::after {
-    content: '';
-    background: rgb(255, 255, 255);
-    background: linear-gradient(0deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, .2) 100%);
-    position: absolute;
-    right: 20vw;
-    bottom: -5em;
-    z-index: -5;
-    width: 15vh;
-    height: 15vh;
-    border-radius: 50%;
-    opacity: 0;
-    transition: ease 0.5s all;
-}
-
-
-/* ---- Theme State Rules ---- */
-/* Section Active Styles */
-/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
-section.your-active-class {
-    background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-}
-
-section.your-active-class .landing__container::before {
-    opacity: 1;
-    animation: rotate 4s linear 0s infinite forwards;
-}
-
-section.your-active-class .landing__container::after {
-    opacity: 1;
-    animation: rotate 5s linear 0s infinite forwards reverse;
-}
-
-/* Section Active Styles Keyframe Animations */
+/* Keyframe Animations */
 @keyframes rotate {
-    from {
-        transform: rotate(0deg) translate(-1em) rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg) translate(-1em) rotate(-360deg);
-    }
+	from {
+		transform: rotate(0deg)
+		           translate(-1em)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-1em) 
+		           rotate(-360deg);
+	}
 }

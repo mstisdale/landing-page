@@ -1,65 +1,89 @@
-/**
+// Setup event listeners for each function
 
- * Dependencies: None
- *
- * JS Version: ES2015/ES6
- *
- * JS Standard: ESlint
- *
-*/
+document.addEventListener('DOMContentLoaded', NavBar, false);
+document.addEventListener('DOMContentLoaded', ActiveSection, false);
+document.addEventListener('DOMContentLoaded', ActiveNavBar, false);
+document.addEventListener('DOMContentLoaded', SmallMenu, false);
 
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
+// Dynamically builds the navigation menu
+function NavBar() {
+    const section = document.querySelectorAll('section');
+    for (let i = 0; i < section.length; i++) {
+        const li = document.createElement('li');
+        const tag = document.createElement('a');
+        const sectionName = section[i].getAttribute('data-nav');
+        const sectionNamePart = sectionName.replace(/\s/g, '').toLowerCase();
+        tag.setAttribute('href', "#" + sectionNamePart);
+        tag.setAttribute('id', "navlinks" + [i + 1]);
+        tag.innerText = sectionName;
+        li.appendChild(tag);
+        document.getElementById("navbar__list").appendChild(li);
+        document.getElementById("navlinks" + [i + 1]).addEventListener("click", function () {
+            Scrolling(i + 1)
+        });
+    };
+}
 
-/**
- * Define Global Variables
- *
-*/
+// Makes the current section active 
+function ActiveSection() {
+    window.addEventListener('scroll', function () {
+        const element = document.getElementsByClassName('landing__container');
+        for (var i = 0; i < element.length; i++) {
+            const position = element[i].getBoundingClientRect();
+            const posit = position.top;
+            if (posit <= window.innerHeight / 2) {
+                var activeClass = document.getElementsByClassName("your-active-class");
+                activeClass[0].className = activeClass[0].className.replace(" your-active-class", "");
+                element[i].className += " your-active-class";
+
+                var current = document.getElementsByClassName("active");
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" active", "");
+                }
+
+                var links = document.getElementById("navbar__list").querySelectorAll('li');
+                links[i].className += " active";
+            };
+        };
+    });
+}
+
+// Highlights active navbar link
+function ActiveNavBar() {
+    var linksContainer = document.getElementById("navbar__list");
+    var links = linksContainer.querySelectorAll('li');
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("active");
+            if (current.length > 0) {
+                current[0].className = current[0].className.replace(" active", "");
+            }
+            this.className += " active";
+        });
+    };
+}
+
+// ScrollTo event handling
+function Scrolling(sectionI) {
+    const section = document.getElementById('section' + sectionI);
+    const pos = section.offsetTop;
+    event.preventDefault();
+    window.scrollTo({
+        left: 0,
+        top: pos,
+        behavior: 'smooth'
+    });
+    SmallMenu();
+}
 
 
-
-/**
- * End Global Variables
- * Start Helper Functions
- *
-*/
-
-
-
-/**
- * End Helper Functions
- * Begin Main Functions
- *
-*/
-
-// build the nav
-
-const javnav = [
-'Section1',
-'Section2',
-'Section3',
-'Section4'
-];
-
-
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- *
-*/
-
-// Build menu
-
-// Scroll to section on link click
-
-// Set sections as active
+// Creates top nav menu
+function SmallMenu() {
+    var x = document.getElementById("navbar__list");
+    if (x.className === "navbar__menu") {
+        x.className += " responsive";
+    } else {
+        x.className = "navbar__menu";
+    }
+}
 
